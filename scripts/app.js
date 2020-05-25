@@ -1,10 +1,25 @@
+'use strict';
+
 const defaultResult = 0;
 let currentResult = defaultResult;
 let logEntries = [];
 
+const usrInput = document.getElementById('input-number');
+const addBtn = document.getElementById('btn-add');
+const subtractBtn = document.getElementById('btn-subtract');
+const multiplyBtn = document.getElementById('btn-multiply');
+const divideBtn = document.getElementById('btn-divide');
+
+const currentResultOutput = document.getElementById('current-result');
+const currentCalculationOutput = document.getElementById('current-calculation');
+
 // Gets input from input field
 function getUserNumberInput() {
   return parseInt(usrInput.value);
+}
+function outputResult(result, text) {
+  currentResultOutput.textContent = result;
+  currentCalculationOutput.textContent = text;
 }
 
 // Generates and writes calculation log
@@ -23,7 +38,7 @@ function writeToLog(
     operation: operationIdentifier,
     prevResult: prevResult,
     number: operationNumber,
-    result: newResult
+    result: newResult,
   };
   logEntries.push(logEntry);
   console.log(logEntries);
